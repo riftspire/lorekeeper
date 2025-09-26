@@ -1,0 +1,45 @@
+# https://help.github.com/en/articles/metadata-syntax-for-github-actions
+name: 'Lorekeeper Action'
+description: 'GitHub Action for Lorekeeper, a release note automation tool'
+author: 'riftspire'
+branding:
+  icon: 'book'
+  color: 'purple'
+
+inputs:
+  tagName:
+    description: |
+      The release tag to use when checking for relevant branches and pull
+      requests.
+    required: true
+  releaseCandidateRegex:
+    description: |
+      The regex pattern to use to identify tags that are release candidates.
+    required: true
+  currentBranchName:
+    description: |
+      The name of the current branch.
+    required: true
+  defaultBranchName:
+    description: |
+      The name of the default branch in the specified repository (i.e - main,
+      master, etc).
+    required: true
+  mode:
+    description: |
+      Mode determines whether GitHub Releases or Git Tags are being used to
+      identify releases.
+
+      Possible values are:
+        release: Can only be used for GitHub repositories that utilise the GitHub Releases feature.
+        tag: Can be used with any Git repositories.
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - --tag ${{ inputs.tagName }} \
+    - --release-candidate-regex ${{ inputs.releaseCandidateRegex }} \
+    - --current-branch-name ${{ inputs.currentBranchName }} \
+    - --default-branch-name ${{ inputs.defaultBranchName }} \
+    - --mode ${{ inputs.mode }}
