@@ -1,6 +1,7 @@
 # ![The header image for lorekeeper. There is a "magic book" on the left, and the text "lorekeeper" to the right.](assets/header_64.png "lorekeeper header")
 
 > **Keeper of your project's tale.**
+>
 > *Inscribing every release into enduring lore.*
 
 `lorekeeper` is a release notes generator that transforms commits and tags into a chronicle of your project's journey. Instead of scattered changes, you get a cohesive story — a record of growth, fixes, and features written like chapters in your code's saga.
